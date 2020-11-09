@@ -1,0 +1,23 @@
+{% extends 'portfolio/base.html'%}
+
+   {% block content %}
+
+<h1>OUR BLOGPAGE</h1>
+
+<h2>Post by Author: {{ posts.count }}</h2>
+<h2>Daniel has written {{ posts.count }} blog{{ posts.count|pluralize}}</h2>
+
+{% for post in posts %}
+
+<a href="{% url 'blog:detail' post.id %}"><h2>{{ post.title }}</h2></a>
+
+<p>{{ post.content|safe|truncatechars:100 }}</p>
+
+<p>{{ post.date }}</p>
+
+<p>{{ post.summary }}</p>
+
+
+{% endfor %}
+
+{% endblock %}
